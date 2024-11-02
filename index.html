@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slight Compiler</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h1>Slight Javascript Compiler</h1>
+  <textarea id="input-code" placeholder="Type your code here, if you want to donate: Key Pix or FedNow: darkgin12@gmail.com"></textarea>
+  <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+  <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script defer="" src ="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+  <script defer="" src ="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+
+
+  <button onclick="compileCode()">Run</button>
+  <button onclick="openSliEnsinn()">Class</button>
+  <button onclick="openDocumentation()">Docs</button>
+  <button onclick="openEditor()">HTML</button>
+  <button onclick="saveCode()">Save</button>
+  <button onclick="loadCode()">Load</button>
+  <div id="output"></div>
+  
+  <script defer="" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+  <script src="compJS.js"></script>
+  <script>
+    function openDocumentation() {
+      var url = "docs.html";
+      history.pushState({}, "", url);
+      window.location.href = url;
+    }
+
+    function openSliEnsinn() {
+      var url = "ensino.html";
+      history.pushState({}, "", url);
+      window.location.href = url;
+    }
+
+    function openEditor() {
+      var url = "editor.html";
+      history.pushState({}, "", url);
+      window.location.href = url;
+    }
+
+        function saveCode() {
+            const code = document.getElementById('input-code').value;
+            localStorage.setItem('savedCode', code);
+            alert('Saved Code!');
+        }
+
+        function loadCode() {
+            const savedCode = localStorage.getItem('savedCode');
+            if (savedCode) {
+                document.getElementById('input-code').value = savedCode;
+                alert('Code Loaded!');
+            } else {
+                alert('No saved codes found');
+            }
+        }
+  </script>
+</body>
+</html>

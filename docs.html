@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slight JavaScript Docs</title>
+  <link rel="stylesheet" type="text/css" href="sty3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+</head>
+<body>
+
+<button onclick="voltarParaPaginaInicial()">
+  <i class="fas fa-long-arrow-alt-left"></i>
+</button>
+
+<script>
+function voltarParaPaginaInicial() {
+  window.location.href = '/';
+}
+</script>
+
+  <h1>Slight JavaScript Docs</h1>
+  
+  <pre>
+    <code1>
+      Abaixo haverá alguns exemplos de uso para o compilador e não o número e extensão
+      real de todas as funcionalidades/bibliotecas
+    </code1>
+  </pre>
+
+
+  <h2>Tipos de Dados em JavaScript e Operações com Arrays</h2>
+  <pre>
+    <code>
+    First Example: data types
+    
+    boolean: verdadeiro ou falso
+    number: numeros
+    null: nulo
+    undefined: indefinido
+    BigInt: para numeros inteiros maiores que 2^53
+    Int: para numeros inteiros
+    String: para sequencia de caracteres
+    Symbol: para simbolos
+
+      console.log(typeof(4)) Saida: Number
+      console.log(isNaN("a")) Saida: verdadeiro, pois a letra a não é um numero
+
+Second Example: operations with arrays
+
+lista = [1,2,3,4,5,6,7]
+
+const novaLista = lista.map(function(item) {
+  return item * 5  
+})
+
+console.log(novaLista) Saida: [5,10,15,20,25,30,35]
+
+const outraLista = lista.reduce(function(total, proximo) {
+ return total + proximo
+})
+
+console.log(outraLista) Saida: 28, que seria a soma de todos os números do Array
+
+}
+
+  <h2>Exemplos de funções</h2>
+  <pre>
+    <code>
+    Example 1: sum function   
+
+   Tipo 1:  function soma(x, y) {
+          return x + y
+      }
+      
+      console.log(soma(1,4)) Saida: 5
+
+    Tipo 2: 
+
+    x = 30
+    y = 10
+
+    function soma(x, y) {
+          return x + y
+      }
+      
+      console.log(soma()) Saida: 40
+      Nesse caso, defini os valores a ser somados por meio de variáveis e não estou passando por meio da função
+     
+
+    
+    Example 2: fibonacci function
+
+    var fibonacci = function(n) {
+    var a = 0, b = 1;
+    for (var i = 2; i <= n; i++) {
+        var f = a;
+        a = b;
+        b += f;
+    }
+    return b;
+};
+
+console.log(fibonacci(14)) Saida : 377
+      
+    </code>
+
+<h2>Exemplo de uso da bibloteca Uuid</h2>
+  <pre>
+    <code>
+
+    function generateUUIDs() {
+        const uuids = [];
+
+    for (let i = 0; i < 5; i++) {
+        const uuid = crypto.randomUUID();
+        uuids.push(uuid);
+    }
+
+    console.log("Generated UUIDs:", uuids); um exemplo de saida de uuid aleatorio ( pode variar ao rodar de novo) : Generated UUIDs:
+    ["2352fe46-b832-4656-9cbc-4f99814b23e0","140893b6-831d-4469-a530-4c8649bf5ca4","e9276620-8002-417a-93be-9ba2fa7e79fd","6cace1d1-3490-4995-836e-801c02611add","e6147682-ae28-440a-9c3a-e6160fd16160"]
+    }
+
+    // Chamar a função
+    generateUUIDs();
+</code>
+
+<h2>Exemplo de uso da bibloteca Axios</h2>
+  <pre>
+    <code>
+
+// Função para fazer uma requisição GET
+function fetchData() {
+    axios.get('https://jsonplaceholder.typicode.com/posts/1')
+        .then(response => {
+            console.log('GET Response:', response.data);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+
+    // Função para fazer uma requisição POST
+    function postData() {
+        const data = {
+            title: 'foo',
+            body: 'bar',
+            userId: 1,
+    };
+
+    axios.post('https://jsonplaceholder.typicode.com/posts', data)
+        .then(response => {
+            console.log('POST Response:', response.data);
+        })
+        .catch(error => {
+            console.error('Error posting data:', error);
+        });
+}
+
+    // Chamar as funções
+    fetchData();
+    postData();
+
+    Saidas ( algumas coisas irao variar ao rodar de novo) : GET Response:
+    {"userId":1,"id":1,"title":"sunt aut facere repellat provident occaecati excepturi optio reprehenderit","body":"quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum        rerum est autem sunt rem eveniet architecto"}
+    POST Response:
+    {"title":"foo","body":"bar","userId":1,"id":101}
+</code>
+
+  <h2>Exemplos de Concatenação de Strings</h2>
+  <pre>
+    <code>
+      First Example: Concatenation of two strings
+
+      var palavra1 = "Olá";
+      var palavra2 = "mundo!";
+      var messagem = palavra1 + palavra2;
+      console.log(messagem); Saida: "Olá mundo!" 
+
+      Second Example: Template String
+
+      const nome = "Felipe";
+      const sobrenome = "Meira" ;
+      console.log(` Bem vindo ${nome} ${sobrenome}`); // Saida: "Bem vindo Felipe Meira"
+    </code>
+  </pre>
+
+  <h2>Exemplo de Objeto</h2>
+  <pre>
+    <code>
+      Creation Of Object
+
+      var pessoa = {
+          nome: "Paulo",
+          idade: 30,
+          cidade: "Nova Jersey"
+        };
+
+        Accessing object properties
+
+        console.log(pessoa.nome);   Saida: "Paulo"
+        console.log(pessoa.idade);  Saida: 30
+        console.log(pessoa.cidade); Saida: "Nova Jersey"
+        console.log(pessoa);        Saida: "todos os atributos juntos"
+
+        Creating an object differently
+
+        var Carro = new Object();
+        Carro.fabricante = "Chevrolet";
+        Carro.modelo = "Opalla";
+        Carro.ano = 1968;
+
+        Accessing properties of the second object
+
+        console.log(Carro.fabricante) Saida: "Chevrolet"
+        console.log(Carro.modelo)     Saida: "Opalla"
+        console.log(Carro.ano)        Saida: "1968"  
+        console.log(Carro)            Saida: todos os atributos juntos  
+
+    </code>
+  </pre>
+
+  <h2>Exemplo de Uso da Biblioteca Date</h2>
+  <pre>
+    <code>
+      Creating a Date instance
+
+      var dataAtual = new Date();
+      var diaHoje = dataAtual.getDay();
+      console.log(diaHoje);   Saida: "17"
+      console.log(dataAtual); Saida: "Fri Jul 16 2023 00:00:00 GMT+0000 (Tempo Coordenado Universal)"
+    </code>
+  </pre>
+
+  <h2>Exemplo de Uso da Biblioteca Lodash</h2>
+  <pre>
+    <code>
+     Example 1: Using Lodash's _.intersection function
+
+      var animaisArray1 = ['cabra', 'cobra', 'elefante', 'peixe', 'hamster']
+      var animaisArray2 = ['cabra', 'elefante', 'pato', 'cavalo', 'gato']
+      var valoresIguais = _.intersection(animaisArray1, animaisArray2)
+      console.log(valoresIguais) // Saida: ['cabra', 'elefante']
+
+     Exemplo 2: Using Lodash's _.fill function
+
+    var numerais = [4, 6, 8, 3]
+    _.fill(numerais, 'd')
+    console.log(numerais); Saida: ['d', 'd', 'd', 'd'] 
+    </code>
+  </pre>
+
+  
+  </pre>
+</body>
+</html>
+
+
+
+
+<h2>Exemplo de Uso da Biblioteca Math</h2>
+  <pre>
+    <code>
+      Using Math's abs, sqrt and pow functions
+
+      var conta1 = Math.abs(-1234)
+      alert(conta1); Saida: 1234
+
+      var conta2 = Math.sqrt(9)
+      console.log(conta2); Saida: 3
+
+      var conta3 = Math.pow(4, 4)
+      console.log(conta3); Saida: 256
+
+      var aleatorio = Math.random(1,8);
+      console.log(aleatorio) Saida: um número aleatorio entre 1 e 8, se eu tirar os mesmos do parantese, irá gerar um numero entre 0 e 1
+      e também dá para codar uma função para fazer essa aleatoriedade funcionar de outras maneiras
+      <code2>  
+      obs: da para usar o console.log também, usei o alert para mostrar
+      uma outra funcionalidade, assim como as bibliotecas Lodash, Moment e outras, que não funciona em outros
+      compiladores online, somente no meu
+      </code2>
+    </code>
+
+    <h2>Exemplo de Uso do Spread Operator e Push</h2>
+  <pre>
+    <code>
+     First Example: Joining elements using spread instead of push
+
+            let primeiros = [1, 2, 3]
+            let numeros = [...primeiros, 4,5,6]
+            
+            console.log(numeros) Saida: [1,2,3,4,5,6]
+      
+
+     Second Example: Using the Array Push method 
+
+        let contagem = [4, 5, 6]
+        let adicionar = [1,2,3]
+        adicionar.push(contagem)
+
+        console.log(adicionar) Saida: [1,2,3,[4,5,6]]
+
+    oque percebemos é que ao usar push ou unshift com dois ou + arrays
+    o resultado não será satisfatório, sendo assim melhor usar o spread
+
+    </code>
+  </pre>
